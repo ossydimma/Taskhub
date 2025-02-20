@@ -33,8 +33,8 @@ export default function TimeTracker() {
     };
 
   return (
-    <div className="bg-black text-white text-center mt-2 mb-[5rem] sm:mb-4 md:mb-0 h-[12rem] rounded-3xl py-4 mx-2 md:mx-0">
-        <div className=" flex flex-col gap-4">
+    <div className="bg-black text-white text-center mt-2 mb-[5rem] sm:mb-4 md:mb-0 h-[11.5rem] rounded-3xl py-4 mx-2 md:mx-0">
+        <div className=" flex flex-col gap-3">
             <h2 className="font-bold text-2xl font-serif">Time Tracker</h2>
 
             <h1 className="font-semibold text-3xl font-mono">{formatTime(elapsedTime)}</h1>

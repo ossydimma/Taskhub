@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import clsx from "clsx";
@@ -36,14 +37,13 @@ export default function sideBar() {
       setShowSideBar(true);
 
       window.innerWidth <= 815 ? setIsMaximized(false) : setIsMaximized(true);
-      
     } else {
       setShowSideBar(false);
     }
   };
 
   return (
-    <div className=" h-[96Vh] sm:my-[2vh] sm:ml-[0.5vh] sm:pt-2 pb-3.5 sm:px-3 md:px-2 ">
+    <div className=" h-[96Vh] sm:my-[2vh] sm:ml-[0.5vh] sm:pt-2 pb-3.5 sm:px-3 md:px-2 text-black ">
       {showSideBar && (
         <div className=" h-[95vh] flex flex-col justify-between pt-2 ">
           <ul
@@ -54,7 +54,7 @@ export default function sideBar() {
             <li>
               <div
                 className={clsx(
-                  `flex items-center pb-3 gap-3 border-b-[3px] border-dashed border-gray-400 cursor-pointer`,
+                  `flex items-center pb-3 gap-3 pl-2 border-b-[3px] border-dashed border-gray-400 cursor-pointer`,
                   {
                     "pl-1": isMaximized,
                   }
@@ -103,84 +103,23 @@ export default function sideBar() {
               className=" my-4"
               // @onclick="HandleCreateTaskDisplay"
             >
-              <div>
-                {isMaximized && (
-                  <div
-                    className={`${
-                      pathname === "/createtask"
-                        ? "bg-black text-white fill-white"
-                        : "bg-white fill-black"
-                    }  flex items-center pl-2 gap-2 border-2 hover:border-black py-2 rounded-lg cursor-pointer`}
-                  >
-                    {/* @* Plus Icon *@ */}
-                    <svg
-                      className=" w-5 md:w-6 "
-                      viewBox="0 0 32 32"
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlnsXlink="http://www.w3.org/1999/xlink"
-                    >
-                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g
-                        id="SVGRepo_tracerCarrier"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></g>
-                      <g id="SVGRepo_iconCarrier">
-                        <title>plus-circle</title>
-                        <desc>Created with Sketch Beta.</desc>
-                        <defs> </defs>
-                        <g
-                          id="Page-1"
-                          // stroke="none"
-                          strokeWidth="1"
-                          // fill="none"
-                          fillRule="evenodd"
-                        >
-                          <g
-                            id="Icon-Set"
-                            transform="translate(-464.000000, -1087.000000)"
-                            // fill="#000000"
-                          >
-                            <path
-                              d="M480,1117 C472.268,1117 466,1110.73 466,1103 C466,1095.27 472.268,1089 480,1089 C487.732,1089 494,1095.27 494,1103 C494,1110.73 487.732,1117 480,1117 L480,1117 Z M480,1087 C471.163,1087 464,1094.16 464,1103 C464,1111.84 471.163,1119 480,1119 C488.837,1119 496,1111.84 496,1103 C496,1094.16 488.837,1087 480,1087 L480,1087 Z M486,1102 L481,1102 L481,1097 C481,1096.45 480.553,1096 480,1096 C479.447,1096 479,1096.45 479,1097 L479,1102 L474,1102 C473.447,1102 473,1102.45 473,1103 C473,1103.55 473.447,1104 474,1104 L479,1104 L479,1109 C479,1109.55 479.447,1110 480,1110 C480.553,1110 481,1109.55 481,1109 L481,1104 L486,1104 C486.553,1104 487,1103.55 487,1103 C487,1102.45 486.553,1102 486,1102 L486,1102 Z"
-                              id="plus-circle"
-                            >
-                              {" "}
-                            </path>
-                          </g>
-                        </g>
-                      </g>
-                    </svg>
-                    <p className=" font-medium">New task</p>
-                  </div>
-                )}
-                {!isMaximized && (
-                  <div className=" h-[3.25rem]">
+              <Link href={"/createtask"}>
+                <div>
+                  {isMaximized && (
                     <div
                       className={`${
                         pathname === "/createtask"
-                          ? "bg-black text-white stroke-white"
-                          : ""
-                      } cursor-pointer p-2.5 rounded-full  hover:bg-black hover:text-white stroke-black  hover:stroke-white`}
-                      onMouseEnter={() =>
-                        setShowToolTips((prev) => ({
-                          ...prev,
-                          createTask: true,
-                        }))
-                      }
-                      onMouseLeave={() =>
-                        setShowToolTips((prev) => ({
-                          ...prev,
-                          createTask: false,
-                        }))
-                      }
+                          ? "bg-black text-white fill-white"
+                          : "bg-white fill-black"
+                      }  flex items-center pl-2 gap-2 border-2 hover:border-black py-2 rounded-lg cursor-pointer`}
                     >
+                      {/* @* Plus Icon *@ */}
                       <svg
-                        className=" w-6 md:w-7 mx-auto"
-                        viewBox="0 0 24 24"
-                        fill="none"
+                        className=" w-5 md:w-6 "
+                        viewBox="0 0 32 32"
+                        version="1.1"
                         xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
                       >
                         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                         <g
@@ -189,21 +128,84 @@ export default function sideBar() {
                           strokeLinejoin="round"
                         ></g>
                         <g id="SVGRepo_iconCarrier">
-                          <path
-                            d="M6 12H18M12 6V18"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          ></path>
+                          <title>plus-circle</title>
+                          <desc>Created with Sketch Beta.</desc>
+                          <defs> </defs>
+                          <g
+                            id="Page-1"
+                            // stroke="none"
+                            strokeWidth="1"
+                            // fill="none"
+                            fillRule="evenodd"
+                          >
+                            <g
+                              id="Icon-Set"
+                              transform="translate(-464.000000, -1087.000000)"
+                              // fill="#000000"
+                            >
+                              <path
+                                d="M480,1117 C472.268,1117 466,1110.73 466,1103 C466,1095.27 472.268,1089 480,1089 C487.732,1089 494,1095.27 494,1103 C494,1110.73 487.732,1117 480,1117 L480,1117 Z M480,1087 C471.163,1087 464,1094.16 464,1103 C464,1111.84 471.163,1119 480,1119 C488.837,1119 496,1111.84 496,1103 C496,1094.16 488.837,1087 480,1087 L480,1087 Z M486,1102 L481,1102 L481,1097 C481,1096.45 480.553,1096 480,1096 C479.447,1096 479,1096.45 479,1097 L479,1102 L474,1102 C473.447,1102 473,1102.45 473,1103 C473,1103.55 473.447,1104 474,1104 L479,1104 L479,1109 C479,1109.55 479.447,1110 480,1110 C480.553,1110 481,1109.55 481,1109 L481,1104 L486,1104 C486.553,1104 487,1103.55 487,1103 C487,1102.45 486.553,1102 486,1102 L486,1102 Z"
+                                id="plus-circle"
+                              >
+                                {" "}
+                              </path>
+                            </g>
+                          </g>
                         </g>
                       </svg>
+                      <p className=" font-medium">New task</p>
                     </div>
-                    {showToolTips.createTask && (
-                      <p className=" font-bold text-[10.5px]">New task</p>
-                    )}
-                  </div>
-                )}
-              </div>
+                  )}
+                  {!isMaximized && (
+                    <div className=" h-[3.25rem]">
+                      <div
+                        className={`${
+                          pathname === "/createtask"
+                            ? "bg-black text-white stroke-white"
+                            : ""
+                        } cursor-pointer p-2.5 rounded-full  hover:bg-black hover:text-white stroke-black  hover:stroke-white`}
+                        onMouseEnter={() =>
+                          setShowToolTips((prev) => ({
+                            ...prev,
+                            createTask: true,
+                          }))
+                        }
+                        onMouseLeave={() =>
+                          setShowToolTips((prev) => ({
+                            ...prev,
+                            createTask: false,
+                          }))
+                        }
+                      >
+                        <svg
+                          className=" w-6 md:w-7 mx-auto"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M6 12H18M12 6V18"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            ></path>
+                          </g>
+                        </svg>
+                      </div>
+                      {showToolTips.createTask && (
+                        <p className=" font-bold text-[10.5px]">New task</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </Link>
             </li>
 
             {/* ----------HOME----------- */}
@@ -221,7 +223,7 @@ export default function sideBar() {
                       pathname === "/" ? "bg-black text-white fill-white" : ""
                     } flex  items-center p-2 gap-2.5 cursor-pointer rounded-full hover:bg-black hover:text-white fill-black hover:fill-white`,
                     {
-                      "rounded-lg border-2 border-black ": isMaximized,
+                      "rounded-lg border-2 border-gray-600 ": isMaximized,
                       "rounded-full p-3": !isMaximized,
                     }
                   )}
@@ -271,7 +273,7 @@ export default function sideBar() {
                         : ""
                     } flex items-center p-2 gap-2.5 cursor-pointer hover:bg-black hover:text-white fill-black hover:fill-white`,
                     {
-                      "rounded-lg border-2 border-black ": isMaximized,
+                      "rounded-lg border-2 border-gray-600 ": isMaximized,
                       "rounded-full p-3": !isMaximized,
                     }
                   )}
@@ -331,7 +333,7 @@ export default function sideBar() {
                         : ""
                     } flex  items-center p-2 gap-2.5 cursor-pointer hover:bg-black hover:text-white fill-black hover:fill-white`,
                     {
-                      "rounded-lg border-2 border-black ": isMaximized,
+                      "rounded-lg border-2 border-gray-600 ": isMaximized,
                       "rounded-full p-3": !isMaximized,
                     }
                   )}
@@ -395,7 +397,7 @@ export default function sideBar() {
                         : ""
                     } flex  items-center p-2 gap-2.5 cursor-pointer  hover:bg-black hover:text-white stroke-black hover:stroke-white`,
                     {
-                      "rounded-lg border-2 border-black ": isMaximized,
+                      "rounded-lg border-2 border-gray-600 ": isMaximized,
                       "rounded-full p-3": !isMaximized,
                     }
                   )}
@@ -454,7 +456,7 @@ export default function sideBar() {
                 className={clsx(
                   `flex  items-center p-2 gap-2.5 cursor-pointer   hover:bg-red-600 hover:text-white stroke-black hover:stroke-white`,
                   {
-                    "rounded-lg border-2 border-black hover:border-white pl-[0.6rem] ":
+                    "rounded-lg border-2 border-gray-600 hover:border-white pl-[0.6rem] ":
                       isMaximized,
                     "rounded-full p-3 ": !isMaximized,
                   }

@@ -1,6 +1,7 @@
 'use client'
 import TimeTracker from "./components/TimeTracker";
 import Calendar from "react-calendar";
+import Header from "./components/header";
 import 'react-calendar/dist/Calendar.css';
 import { useState } from "react";
 
@@ -8,8 +9,9 @@ export default function Home() {
   const [date, setDate] = useState<Date>(new Date());
   return (
     <main className="text-black">
+      <Header />
       <div className=" flex justify-center items-center border-dashed border-gray-500 border-b-2 pb-[2vh] pt-[-2vh]">
-        <div className=" w-[80%] md:w-[50%] lg:w-[45%] flex sm:hidden items-center justify-between  px-3.5 border border-gray-600 rounded-3xl  ">
+        <div className=" w-[60%] md:w-[50%] lg:w-[45%] flex sm:hidden items-center justify-between  px-3.5 border border-gray-600 rounded-3xl  ">
           <input
             type="text"
             placeholder="Search"

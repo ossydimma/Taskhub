@@ -268,7 +268,7 @@ export default function sideBar() {
                   }
                   className={clsx(
                     `${
-                      pathname === "/mytask"
+                      pathname === "/mytasks"
                         ? "bg-black text-white fill-white"
                         : ""
                     } flex items-center p-2 gap-2.5 cursor-pointer hover:bg-black hover:text-white fill-black hover:fill-white`,

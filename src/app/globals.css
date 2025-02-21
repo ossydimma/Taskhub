@@ -50,3 +50,61 @@ body {
 ::-webkit-scrollbar-corner {
   background: #f1f1f1;
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding:  0;
+  position: absolute;
+  z-index: 2;
+  bottom: -2rem; /* Position the tooltip above the text */
+  left: 50%;
+  margin-left: -70px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-container:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .tooltiptext ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tooltip .tooltiptext ul li {
+  padding: 3px;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext ul li:hover {
+  background-color: #555;
+}
+
+.checkBox-tooltip {
+  width: 70%;
+  top: -8px;
+  left: 0;
+  visibility: hidden;
+  transition: left 2s ease
+}
+
+.checkBox-conatiner:hover .checkBox-tooltip {
+  /* width: 70%; */
+  left: 6rem;
+  visibility: visible;
+  opacity: 1;
+  /* transform: translateX(100%); */
+}

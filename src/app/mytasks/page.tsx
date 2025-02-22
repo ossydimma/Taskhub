@@ -1,19 +1,35 @@
 'use client';
 
 import { tasks, categories } from "./mock";
+import ModifyTask from "../components/modifyTask";
+import { useState } from "react";
+import { UserTask } from "../../../Interfaces";
 
 export default function page() {
 
+  const [displayMoreOptions, setDisplayMoreOptions] = useState<boolean>()
+  const [selectedTask, setSelectedTask] = useState<undefined | UserTask>(
+    undefined
+  );
+  const [option, setOption] = useState<
+      "Details" | "Edit" | "Delete" | undefined
+    >(undefined);
+    
 
-  const ViewDetails = (id : string) => {
+  const handleSelectedTask = (id : string, SelectedOption : "Details" | "Edit" | "Delete"  ) => {
+    setSelectedTask(tasks.find(task => task.Id == id));
+
+    if (selectedTask !== undefined) {
+      setDisplayMoreOptions(true);
+      setOption(SelectedOption)
+    }else {
+      console.log(`task ${id} not found`);
+    }
+
+    console.log(selectedTask)
 
   }
-  const EditTask = (id : string) => {
-
-  }
-  const DeleteTask = (id : string) => {
-
-  }
+  
   return (
     <main className="text-xs xs:text-sm md:text-[1rem] border-gray-500 ">
       <section className="flex justify-between items-center px-6 mt-5 lmd:mt-8 -mb-2 border-b-2 border-dashed border-gray-500 pb-4">
@@ -159,9 +175,9 @@ export default function page() {
                         <span>Options</span>    
                         <div className="tooltiptext text-sm">
                             <ul>
-                                <li onClick={() => ViewDetails(task.Id)}>Details</li>
-                                <li onClick={() => EditTask(task.Id)}>Edit</li>
-                                <li onClick={() => DeleteTask(task.Id)} >Delete</li>
+                                <li onClick={() => handleSelectedTask(task.Id, "Details")}>Details</li>
+                                <li onClick={() => handleSelectedTask(task.Id, "Edit")}>Edit</li>
+                                <li onClick={() => handleSelectedTask(task.Id, "Delete")} >Delete</li>
                             </ul>
                         </div>
                     </div>
@@ -171,6 +187,7 @@ export default function page() {
           </div>
         </div>
       </section>
+      { displayMoreOptions && <ModifyTask option={option} setOption={setOption} selectedTask={selectedTask} setSelectedTask={setSelectedTask} setDisplayMoreOptions={setDisplayMoreOptions} />}
     </main>
   );
 }

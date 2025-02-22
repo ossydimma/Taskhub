@@ -16,3 +16,19 @@ export interface UserTask {
     Deadline : Date;
     Status : boolean;
 }
+
+export interface modifyTaskParams {
+    option : "Details" | "Edit" | "Delete" | undefined;
+    setOption : (value : "Details" | "Edit" | "Delete" | undefined) => void;
+    selectedTask : UserTask | undefined;
+    setSelectedTask : (value : UserTask | undefined) => void;
+    setDisplayMoreOptions : (value : boolean) => void;
+}
+
+export interface TaskModel {
+    Title: string | undefined;
+    Description: string | undefined;
+    Deadline: string | undefined;
+    Category: string | undefined;
+    Status: boolean | undefined;
+}

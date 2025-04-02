@@ -28,7 +28,22 @@ export interface modifyTaskParams {
 export interface TaskModel {
     Title: string | undefined;
     Description: string | undefined;
-    Deadline: string | undefined;
+    Deadline: Date | undefined;
     Category: string | undefined;
     Status: boolean | undefined;
+}
+
+export interface FilterByType {
+    allTask : boolean;
+    status : string | undefined;
+    deadline : Date | undefined;
+    category : string | undefined;
+}
+
+export interface DocummentType {
+    id : string;
+    title : string;
+    content : string;
+    formattedDate : string;
+    isHovered : boolean;
 }

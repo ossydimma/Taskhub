@@ -73,7 +73,18 @@ body {
   transition: opacity 0.3s;
 }
 
-.tooltip-container:hover .tooltiptext {
+.style-task-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 2;
+}
+
+.tooltip-container:hover .tooltiptext  {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip-container:hover .style-task-tooltip {
   visibility: visible;
   opacity: 1;
 }

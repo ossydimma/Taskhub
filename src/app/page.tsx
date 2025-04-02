@@ -56,9 +56,11 @@ export default function Home() {
         <section className="  w-[100%] md:w-[65%] md:mx-8">
             {/* @if (IsAuthenticated)
             { */}
-                <div className=" flex flex-wrap gap-2 md:gap-4 justify-between items-center text-xs xs:text-sm text-white ">
+                <div className=" justify-between items-center text-white ">
 
-                    <div className=" text-center flex-1 w-[calc(1/3-1rem)] p-3 bg-black rounded-2xl border ">
+                  <h1 className=" bg-black text-xl md:text-2xl lmd:text-3xl rounded-lg py-2 lmd:py-5 px-6 lmd:px-8 font-bold lmd:font-extrabold tracking-normal md:tracking-wide">Hey Osita, <span className="text-lg md:text-xl lmd:text-2xl">You got <span className="bg-white rounded-full text-black py-2 px-2.5 text-center">10</span>  task today.</span> </h1>
+
+                    {/* <div className=" text-center flex-1 w-[calc(1/3-1rem)] p-3 bg-black rounded-2xl border ">
                         <h2 className="font-semibold">All Tasks</h2>
                         <p>3000</p>
                     </div>
@@ -71,32 +73,32 @@ export default function Home() {
                     <div className=" text-center flex-1 w-[calc(1/3-1rem)] p-3 bg-black rounded-2xl border ">
                         <h2 className="font-semibold">Complete Tasks</h2>
                         <p>3000</p>
-                    </div>
+                    </div> */}
 
                 </div>
 
                  {/* ------------ LEFT CONTENT ----------------  */}
 
 
-                <div className="mt-8 mx-2 md:mx-8">
+                <div className="mt-5 mx-2 md:mx-8">
                     <div className="flex justify-between items-center text-black mb-4 font-serif">
                         <h2 className="font-bold text-2xl">Today's Task</h2>
                         <p className=" text-right text-lg font-medium cursor-pointer">view all</p>
                     </div>
 
-                    <div className=" flex flex-col gap-4  ">
-                        <div className="pt-7 px-6 shadow-lg border-gray-400 border-t-2">
+                    <div className=" flex flex-col gap-4 ">
+                        <div className="pt-5 px-6 shadow-lg border-gray-400 border-t-2">
                             <p className=" font-semibold text-lg">Landing PageTitle Agency Creative</p>
                             <p className="text-sm font-medium mb-2">work project</p>
 
-                            <div className="flex items-center justify-between border-gray-400  border-t-2 py-4">
+                            <div className="flex items-center justify-between border-gray-400  border-t-2 py-2">
                                 <p className="font-semibold">10:00 - 12:30 am</p>
                                 <div className="px-4 py-2 rounded-xl text-white bg-black cursor-pointer">On
                                     Progress</div>
                             </div>
                         </div>
 
-                        <div className="pt-7 px-6 shadow-lg border-gray-400 border-t-2">
+                        <div className="pt-5 px-6 shadow-lg border-gray-400 border-t-2">
                             <p className=" font-semibold text-lg">Landing PageTitle Agency Creative</p>
                             <p className="text-sm font-medium mb-2">personal project</p>
 

@@ -13,7 +13,8 @@ export default {
           xs: "535px",
           sm: "600px",
           md: "815px",
-          lmd: "900px"
+          lmd: "900px",
+          xl: "1149px",
       },
       colors: {
         background: "var(--background)",

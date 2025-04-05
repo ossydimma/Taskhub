@@ -1,4 +1,10 @@
 
+export interface User {
+    // id : string; 
+    userName : string;
+    email : string;
+    imageSrc : string;   
+}
 export interface NavBarToolTips {
     createTask : boolean;
     home : boolean;

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import moment from "moment";
 
 export default function header() {
@@ -117,8 +118,11 @@ export default function header() {
           </g>
         </svg>
       </div>
+
       <div className=" flex items-center gap-1.5 md:gap-3">
-        <div className="p-2 rounded-full border-2 border-black cursor-pointer">
+
+        {/* Profile */}
+        <Link href={"/profile"} className="p-2 rounded-full border-2 border-black cursor-pointer">
             <svg className=" w-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -129,7 +133,7 @@ export default function header() {
                     </path>
                 </g>
             </svg>
-        </div>
+        </Link>
         {
             showDate && (
                 <div className=" flex items-center justify-center gap-1 stroke-black  border-l-2 border-l-black pl-1.5 md:pl-3 ">

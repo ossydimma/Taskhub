@@ -15,7 +15,7 @@ export default function page() {
     <div className="px-10 pt-7 pb-20 md:pb-0 w-full h-auto md:h-full flex flex-col gap-3 items-center">
         <h1 className=" w-full text-center font-serif text-3xl font-bold border-b-2 border-gray-400 border-dashed pb-2 mb-4 md:mb-14">Profile</h1>
 
-        <div className="relative in-w-[20%] w-[60%] xxs:w-[42%] xs:w-[30%] sm:w-[36%] md:w-[28%] lmd:w-[25%] xl:w-[20%]  h-[25vh] sm:h-[33vh] md:h-[37vh] border-2 border-gray-300 rounded-full shadow-lg">
+        <div className="relative w-[60%] xxs:w-[42%] xs:w-[30%] sm:w-[36%] md:w-[28%] lmd:w-[25%] xl:w-[20%]  h-[25vh] sm:h-[33vh] md:h-[37vh] border-2 border-gray-300 rounded-full shadow-lg">
 
             {users.imageSrc ? (
                 <Image src={users.imageSrc} alt="User's image" width={100} height={100} className="rounded-full w-full h-full object-cover" />
@@ -65,7 +65,7 @@ export default function page() {
 
         </div>
 
-        <div className="flex flex-col items-center pb-[3.2rem] border-b-2 border-gray-400 border-dashed w-full">
+        <div className="flex flex-col items-center pb-[2.2rem] border-b-2 border-gray-400 border-dashed w-full">
             <h2 className="font-bold text-xl">{users.userName}</h2>
             <h2 className="font-medium text-[1.15rem]">{users.email}</h2>
         </div>

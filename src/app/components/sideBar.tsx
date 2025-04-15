@@ -618,7 +618,7 @@ export default function sideBar() {
               {/* ----------- SETTINGS ------------ */}
               <li className="p-2 rounded-2xl  hover:bg-black">
                 <Link
-                  href="/"
+                  href="/settings"
                   className=" hover:text-white stroke-black hover:stroke-white"
                 >
                   <svg

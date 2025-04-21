@@ -53,3 +53,24 @@ export interface DocummentType {
     formattedDate : string;
     isHovered : boolean;
 }
+
+export interface EyeIconType {
+    showPassword : boolean;
+    handlePasswordType : () => void;
+}
+
+export interface PasswordType {
+    newPassword : "password" | "text";
+    confirmPassword : "password" | "text";
+}
+
+export interface ShowPasswordType {
+    newPassword : boolean;
+    confirmPassword : boolean;
+}
+
+export interface PasswordValueType {
+    oldPassword : string;
+    newPassword : string;
+    confirmPassword : string;
+}

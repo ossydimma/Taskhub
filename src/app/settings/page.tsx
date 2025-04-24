@@ -1,11 +1,14 @@
 "use client";
 import { useState } from "react";
 import EyeIcon from "../components/EyeIcon";
+import PhoneInput from "../components/phoneInput";
+import { UserDetails } from "../../../mock";
 import {
   PasswordType,
   PasswordValueType,
   ShowPasswordType,
 } from "../../../Interfaces";
+import ModifyNumber from "../components/ModifyNumber";
 
 export default function page() {
   const [disablePage, setDisablePage] = useState<boolean>(false);
@@ -26,8 +29,11 @@ export default function page() {
     confirmPassword: "",
   });
   const [selectedOption, setSelectedOption] = useState<
-    "userName" | "email" | "password" | undefined
+    "userName" | "email" | "password" | "number" | undefined
   >(undefined);
+
+ 
+  const [hasEmail, setHasEmail] = useState<boolean>(false);
 
   // functions
   const EditUsername = () => {};
@@ -52,7 +58,6 @@ export default function page() {
       if (passwordValue.newPassword !== passwordValue.confirmPassword) {
         setErrorMessage("New password and confirm password do not match");
       } else {
-
         // Call the API to change the password
         alert("Password changed successfully");
       }
@@ -94,6 +99,7 @@ export default function page() {
       </h1>
       <div className={`${disablePage ? `hidden` : `block`} px-8 pt-20`}>
         <ul className="flex flex-col gap-6">
+          {/* ------------------------USERNAME------------------ */}
           <li
             className={`flex justify-between border-b-2 border-gray-600 pb-4  ${
               disablePage ? `cursor-none` : `cursor-pointer hover:border-b-4`
@@ -130,6 +136,8 @@ export default function page() {
             </svg>
           </li>
 
+          {/* ------------------------EMAIL------------------ */}
+
           <li
             className={`flex justify-between border-b-2 border-gray-600 pb-4  ${
               disablePage ? `cursor-none` : `cursor-pointer hover:border-b-4`
@@ -140,7 +148,7 @@ export default function page() {
               setSelectedOption("email");
             }}
           >
-            <span className="font-semibold text-xl">Email</span>
+            <span className="font-semibold text-xl">Email address</span>
             <svg
               className="w-8 h-8"
               viewBox="0 0 24 24"
@@ -166,6 +174,45 @@ export default function page() {
             </svg>
           </li>
 
+          {/* ------------------------PHONE NUMBER------------------ */}
+          <li
+            className={`flex justify-between border-b-2 border-gray-600 pb-4  ${
+              disablePage ? `cursor-none` : `cursor-pointer hover:border-b-4`
+            }`}
+            onClick={() => {
+              setDisablePage(true);
+              setErrorMessage("");
+              setSelectedOption("number");
+            }}
+          >
+            <span className="font-semibold text-xl">Phone number</span>
+            <svg
+              className="w-8 h-8"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <path
+                  d="M10 7L15 12L10 17"
+                  stroke="#000000"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>{" "}
+              </g>
+            </svg>
+          </li>
+
+          {/* ------------------------PASSWORD------------------ */}
+
           <li
             className={`flex justify-between border-b-2 border-gray-600 pb-4  ${
               disablePage ? `cursor-none` : `cursor-pointer hover:border-b-4`
@@ -176,7 +223,7 @@ export default function page() {
               setSelectedOption("password");
             }}
           >
-            <span className="font-semibold text-xl">Login password</span>
+            <span className="font-semibold text-xl">Change password</span>
             <svg
               className="w-8 h-8"
               viewBox="0 0 24 24"
@@ -203,6 +250,9 @@ export default function page() {
           </li>
         </ul>
       </div>
+
+      {/* ------------------------Edit options------------------*/}
+
       {disablePage && (
         <div className=" pt-8 pb-12 px-10 mx-2 absolute  left-1/2 transform -translate-x-1/2 z-10 bg-white shadow-xl h-[33.5rem] md:h-auto top-3 md:top-8  w-[90%] md:w-[45%] rounded-2xl ">
           <div
@@ -213,7 +263,7 @@ export default function page() {
             }}
           >
             <svg
-              className="w-8 md:w-10 ml-auto text-right"
+              className="w-8 md:w-10 ml-auto"
               viewBox="0 0 48 48"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -245,6 +295,8 @@ export default function page() {
               ? "Edit Username"
               : selectedOption === "email"
               ? "Change Email"
+              : selectedOption === "number"
+              ? "Phone Number"
               : "Change Password"}
           </h1>
           <p className="text-red-500 mb-2">{errorMessage}</p>
@@ -270,6 +322,10 @@ export default function page() {
                 </div>
               </form>
             </div>
+          )}
+
+          {selectedOption === "number" && (
+            <ModifyNumber />
           )}
 
           {/* {selectedOption === "email" && ()} */}

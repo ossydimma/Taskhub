@@ -3,7 +3,8 @@ export interface User {
     // id : string; 
     userName : string;
     email : string;
-    imageSrc : string;   
+    imageSrc : string;
+    PhoneNumber : string;   
 }
 export interface NavBarToolTips {
     createTask : boolean;

@@ -9,10 +9,12 @@ import {
   ShowPasswordType,
 } from "../../../Interfaces";
 import ModifyNumber from "../components/ModifyNumber";
+import ChangeNumber from "../components/ChangeNumber";
 
 export default function page() {
   const [disablePage, setDisablePage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [showChangeNumber, setShowChangeNumber] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<ShowPasswordType>({
     newPassword: true,
     confirmPassword: true,
@@ -254,7 +256,7 @@ export default function page() {
       {/* ------------------------Edit options------------------*/}
 
       {disablePage && (
-        <div className=" pt-8 pb-12 px-10 mx-2 absolute  left-1/2 transform -translate-x-1/2 z-10 bg-white shadow-xl h-[33.5rem] md:h-auto top-3 md:top-8  w-[90%] md:w-[45%] rounded-2xl ">
+        <div className=" pt-8 pb-12 px-10 md:px-6 xl:px-10 mx-2 absolute  left-1/2 transform -translate-x-1/2 z-10 bg-white shadow-xl h-[33.5rem] md:h-auto top-3 md:top-8  w-[90%] md:w-[45%] rounded-2xl ">
           <div
             className="cursor-pointer"
             onClick={() => {
@@ -290,7 +292,7 @@ export default function page() {
             </svg>
           </div>
 
-          <h1 className="font-bold font-serif text-3xl text-center border-b-2 border-gray-500 border-dashed pb-4 mb-4 md:mb-4">
+          <h1 className="font-serif text-2xl md:text-xl xl:text-2xl text-center font-semibold  border-b-2 border-gray-500 border-dashed pb-4 mb-4 md:mb-4">
             {selectedOption === "userName"
               ? "Edit Username"
               : selectedOption === "email"
@@ -325,7 +327,7 @@ export default function page() {
           )}
 
           {selectedOption === "number" && (
-            <ModifyNumber />
+            <ModifyNumber setShowChangeNumber={setShowChangeNumber} />
           )}
 
           {/* {selectedOption === "email" && ()} */}
@@ -428,6 +430,13 @@ export default function page() {
             </div>
           )}
         </div>
+      )}
+
+      {showChangeNumber && (
+        <ChangeNumber
+          setShowChangeNumber={setShowChangeNumber}
+          // showChangeNumber={showChangeNumber}
+        />
       )}
     </div>
   );

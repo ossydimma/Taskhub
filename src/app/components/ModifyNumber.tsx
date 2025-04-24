@@ -4,15 +4,15 @@ import 'react-phone-input-2/lib/style.css'
 import PhoneInput from "react-phone-input-2";
 // import {}
 
-export default function ModifyNumber() {
+export default function ModifyNumber( {setShowChangeNumber ,}: {setShowChangeNumber: React.Dispatch<React.SetStateAction<boolean>>}) {
   const [hasPhone, setHasPhone] = useState<boolean>(true);
   const [showRemoveNumber, setShowRemoveNumber] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [showChangeNumber, setShowChangeNumber] = useState<boolean>(false);
-  const [newNumber, setNewNumber] = useState<string>("");
-  const [OTP, setOTP] = useState<string>("");
-  const [disableBtn, setDisableBtn] = useState<boolean>(true);
+  // const [showChangeNumber, setShowChangeNumber] = useState<boolean>(false);
+  // const [newNumber, setNewNumber] = useState<string>("");
+  // const [OTP, setOTP] = useState<string>("");
+  // const [disableBtn, setDisableBtn] = useState<boolean>(true);
 
   const handleRemoveNumber = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,7 +27,7 @@ export default function ModifyNumber() {
         <div className="relative">
           <div>
             <div className="flex justify-between items-center gap-2 my-8">
-              <p className="text-lg">{UserDetails.PhoneNumber}</p>
+              <p className="text-lg md:text-[1rem] xl:text-lg">{UserDetails.PhoneNumber}</p>
               <div
                 className="cursor-pointer hover:text-red-500 p-1"
                 onClick={() => setShowRemoveNumber(true)}
@@ -37,7 +37,7 @@ export default function ModifyNumber() {
             </div>
 
             {showRemoveNumber && (
-              <div className="absolute -top-1 -right-8 w-[75%] h-auto bg-white border border-gray-500 shadow-2xl rounded-lg p-4 z-10">
+              <div className="absolute -top-1 -right-8 w-[100%]  xs:w-[75%] h-auto bg-white border border-gray-500 shadow-2xl rounded-lg p-4 z-10">
                 <div className="flex justify-between items-center gap-2 mb-4 ">
                   <p className="font-medium text-lg"> Enter Password</p>
 
@@ -100,7 +100,7 @@ export default function ModifyNumber() {
               </div>
             )}
 
-            <p className="my-2 ">
+            <p className="my-2 text-[1rem">
               {" "}
               Your phone number helps us keep your account secure by adding an
               additional layer of verification.{" "}
@@ -112,8 +112,8 @@ export default function ModifyNumber() {
               Change Number
             </button>
           </div>
-          {showChangeNumber && (
-            <div className=" pt-8 pb-8 px-10 mx-2 absolute  left-1/2 transform -translate-x-1/2 z-10 bg-white shadow-xl h-[33.5rem] md:h-auto top-3 md:-top-[11rem]  w-[90%] md:w-[110%] rounded-2xl ">
+          {/* {showChangeNumber && (
+            <div className=" pt-8 pb-8 px-10 mx-2 absolute  left-1/2 transform -translate-x-1/2 z-10 bg-white shadow-xl h-[33.5rem] md:h-auto top-3 md:-top-[11rem]  w-[110%] rounded-2xl ">
               <section className="">
                 <div className="flex items-center gap-2 cursor-pointer" onClick={() => {setShowChangeNumber(false)}}>
                   <svg
@@ -179,7 +179,7 @@ export default function ModifyNumber() {
                         />
                         
                     </div>
-                    <p className="text-sm font-semibold text-gray-500 -mb-1 mt-1">A verification code will be sent to your email.</p>
+                    <p className="text-[0.8rem] font-semibold text-gray-500 -mb-1 mt-1">A verification code will be sent you via WhatsApp or SMS.</p>
                     <div className=" flex items-center">
                         <input
                             type="text"
@@ -189,9 +189,9 @@ export default function ModifyNumber() {
                             value={OTP}
                             onChange={(e) => {setOTP(e.target.value); setDisableBtn(e.target.value.length < 4)}}
                             placeholder="Enter OTP"
-                            className="  outline-none w-[80%] rounded-l-md  border-2 border-r-0 border-gray-500 py-2 px-3"
+                            className="  outline-none w-[80%] rounded-l-md  border-2 border-r-0 border-gray-500 h-[2.8rem] px-3"
                         /> 
-                        <button className={ `${newNumber.length < 6 ? "bg-gray-400" : "bg-black" } text-white w-[20%] py-2.5 rounded-r-md`}>Get Code</button>
+                        <button className={ `${newNumber.length < 6 ? "bg-gray-400" : "bg-black" } text-white w-[20%] h-[2.8rem] rounded-r-md text-sm`}>Get Code</button>
                     </div>
                      
                     <div className={`${disableBtn ? "bg-gray-400 cursor-not-allowed" : "bg-black hover:bg-white hover:text-black border-2 border-black"} ml-auto text-white font-semibold text-lg px-8 py-2 rounded-lg mt-2 w-fit`} >
@@ -201,7 +201,7 @@ export default function ModifyNumber() {
                     </div>
                 </form>
             </div>
-          )}
+          )} */}
         </div>
       ) : (
         <div>

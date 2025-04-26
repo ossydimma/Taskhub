@@ -4,7 +4,7 @@ import 'react-phone-input-2/lib/style.css'
 import PhoneInput from "react-phone-input-2";
 // import {}
 
-export default function ModifyNumber( {setShowChangeNumber ,}: {setShowChangeNumber: React.Dispatch<React.SetStateAction<boolean>>}) {
+export default function ModifyContact( {setShowChangeNumber , option}: {setShowChangeNumber: React.Dispatch<React.SetStateAction<boolean>>, option: string | undefined }) {
   const [hasPhone, setHasPhone] = useState<boolean>(true);
   const [showRemoveNumber, setShowRemoveNumber] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
@@ -27,7 +27,7 @@ export default function ModifyNumber( {setShowChangeNumber ,}: {setShowChangeNum
         <div className="relative">
           <div>
             <div className="flex justify-between items-center gap-2 my-8">
-              <p className="text-lg md:text-[1rem] xl:text-lg">{UserDetails.PhoneNumber}</p>
+              <p className="text-lg md:text-[1rem] xl:text-lg">{option == "number" ? UserDetails.PhoneNumber : UserDetails.email }</p>
               <div
                 className="cursor-pointer hover:text-red-500 p-1"
                 onClick={() => setShowRemoveNumber(true)}
@@ -70,9 +70,7 @@ export default function ModifyNumber( {setShowChangeNumber ,}: {setShowChangeNum
                     </g>
                   </svg>
                 </div>
-                <p className="text-[1rem]">
-                  Enter your password to remove number.
-                </p>
+                <p className="text-[1rem]"> Enter your password to remove {option == "number" ? "number" : "email"}</p>
 
                 <form action="" className=" mt-2 flex flex-col gap-2">
                   <label htmlFor="password">password:</label>
@@ -102,14 +100,14 @@ export default function ModifyNumber( {setShowChangeNumber ,}: {setShowChangeNum
 
             <p className="my-2 text-[1rem">
               {" "}
-              Your phone number helps us keep your account secure by adding an
+              Your {option === "number" ? "phone number" : "email address" } helps us keep your account secure by adding an
               additional layer of verification.{" "}
             </p>
             <button
               className="bg-black text-white rounded-lg px-4 py-2 mt-4 w-full"
               onClick={() => setShowChangeNumber(true)}
-            >
-              Change Number
+            > 
+              Change {option === "number" ? "Number" : "Email"} 
             </button>
           </div>
         </div>

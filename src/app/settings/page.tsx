@@ -8,13 +8,13 @@ import {
   PasswordValueType,
   ShowPasswordType,
 } from "../../../Interfaces";
-import ModifyNumber from "../components/ModifyNumber";
-import ChangeNumber from "../components/ChangeNumber";
+import ChangeContact from "../components/ChangeContact";
+import ModifyContact from "../components/ModifyContact";
 
 export default function page() {
   const [disablePage, setDisablePage] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [showChangeNumber, setShowChangeNumber] = useState<boolean>(false);
+  const [showChangeContact, setShowChangeContact] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<ShowPasswordType>({
     newPassword: true,
     confirmPassword: true,
@@ -95,7 +95,7 @@ export default function page() {
     });
   };
   return (
-    <div className="px-10 pt-7 pb-20 md:pb-0 w-full h-auto md:h-full">
+    <div className="px-10 pt-7 pb-20 md:pb-0 w-full h-auto md:h-full font-serif">
       <h1 className=" w-full text-center font-serif text-3xl font-bold border-b-2 border-gray-400 border-dashed pb-2 mb-4 md:mb-8">
         Settings
       </h1>
@@ -177,7 +177,7 @@ export default function page() {
           </li>
 
           {/* ------------------------PHONE NUMBER------------------ */}
-          <li
+          {/* <li
             className={`flex justify-between border-b-2 border-gray-600 pb-4  ${
               disablePage ? `cursor-none` : `cursor-pointer hover:border-b-4`
             }`}
@@ -211,7 +211,7 @@ export default function page() {
                 ></path>{" "}
               </g>
             </svg>
-          </li>
+          </li> */}
 
           {/* ------------------------PASSWORD------------------ */}
 
@@ -296,7 +296,7 @@ export default function page() {
             {selectedOption === "userName"
               ? "Edit Username"
               : selectedOption === "email"
-              ? "Change Email"
+              ? "Email Address"
               : selectedOption === "number"
               ? "Phone Number"
               : "Change Password"}
@@ -326,17 +326,26 @@ export default function page() {
             </div>
           )}
 
-          {selectedOption === "number" && (
-            <ModifyNumber setShowChangeNumber={setShowChangeNumber} />
+          {(selectedOption === "number")  && (
+            <ModifyContact setShowChangeNumber={setShowChangeContact} option={selectedOption} />
           )}
 
           {/* {selectedOption === "email" && ()} */}
+
+          {selectedOption === "email" && (
+            <ModifyContact
+              setShowChangeNumber={setShowChangeContact}
+              option={selectedOption}
+            />
+          )}
+
+          {/* ------------------------PASSWORD------------------ */}
           {selectedOption === "password" && (
             <div>
               <form
                 action=""
                 onSubmit={ChangePassword}
-                className="flex flex-col gap-4"
+                className="flex flex-col gap-4 font-serif"
               >
                 <div className="flex flex-col gap-2">
                   <label
@@ -432,10 +441,10 @@ export default function page() {
         </div>
       )}
 
-      {showChangeNumber && (
-        <ChangeNumber
-          setShowChangeNumber={setShowChangeNumber}
-          // showChangeNumber={showChangeNumber}
+      {showChangeContact && (
+        <ChangeContact
+          setShowChangeContact={setShowChangeContact}
+          option={selectedOption}
         />
       )}
     </div>

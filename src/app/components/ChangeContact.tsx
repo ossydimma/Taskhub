@@ -1,15 +1,16 @@
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { UserDetails } from "../../../mock";
-import { get } from "http";
 
-export default function ChangeNumber({
-  setShowChangeNumber,
+export default function ChangeContact({
+  setShowChangeContact,
+  option,
 }: {
-  setShowChangeNumber: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowChangeContact: React.Dispatch<React.SetStateAction<boolean>>;
+  option: string | undefined;
 }) {
-  const [newNumber, setNewNumber] = useState<string>("");
+  const [newContact, setNewContact] = useState<string>("");
   const [OTP, setOTP] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [disable, setDisable] = useState({
@@ -47,11 +48,11 @@ export default function ChangeNumber({
           <div
             className="flex items-center gap-2 cursor-pointer hover:bg-gray-300 w-fit p-1 transition-all duration-300 ease-in-out "
             onClick={() => {
-              setShowChangeNumber(false);
+              setShowChangeContact(false);
             }}
           >
             <svg
-             className="w-6"
+              className="w-6"
               viewBox="0 0 512 512"
               version="1.1"
               xmlSpace="preserve"
@@ -80,7 +81,7 @@ export default function ChangeNumber({
             <span>Back</span>
           </div>
           <h1 className="text-xl xs:text-2xl md:text-xl xl:text-2xl text-center font-semibold font-serif py-2">
-            Change Phone Number
+            Change {option === "number" ? "Phone Number" : "Email Address"}
           </h1>
         </section>
 
@@ -91,43 +92,68 @@ export default function ChangeNumber({
           <p className="text-red-500">{errorMessage}</p>
           <div>
             <p className="text-sm xs:text-xl md:text-lg xl:text-xl font-semibold mb-2">
-              Current Phone Number:
+              Current {option === "number" ? "Phone Number" : "Email Address"}:
             </p>
             <div className=" border-2 border-gray-500 rounded-md px-3 py-2">
-              {UserDetails.PhoneNumber}
+              {option === "number"
+                ? UserDetails.PhoneNumber
+                : UserDetails.email}
             </div>
           </div>
 
           <div className="flex flex-col gap-2 ">
             <label
-              htmlFor="new-phone-number"
+              htmlFor="Contact"
               className="font-semibold text-sm xs:text-xl md:text-lg xl:text-xl"
             >
-              New Phone Number:
+              New {option === "number" ? "Phone Number" : "Email Address"}:
             </label>
-            <PhoneInput
-              country={"us"}
-              value={newNumber}
-              onChange={(phone) => {
-                setNewNumber(phone);
-                if (phone.length > 6) {
-                  setDisable({ ...disable, getCodeBtn: false });
-                }
-                console.log(newNumber);
-              }}
-              inputStyle={{
-                width: "100%",
-                height: "45px",
-                borderRadius: "5px",
-                border: "2px solid #7b7878",
-                padding: "10px",
-                paddingLeft: "4rem",
-                fontSize: "16px",
-              }}
-            />
+            {option === "number" ? (
+              <PhoneInput
+                country={"us"}
+                value={newContact}
+                onChange={(phone) => {
+                  setNewContact(phone);
+                  if (phone.length > 6) {
+                    setDisable({ ...disable, getCodeBtn: false });
+                  } else {
+                    setDisable({ ...disable, getCodeBtn: true });
+                  }
+                  console.log(newContact);
+                }}
+                inputStyle={{
+                  width: "100%",
+                  height: "45px",
+                  borderRadius: "5px",
+                  border: "2px solid #7b7878",
+                  padding: "10px",
+                  paddingLeft: "4rem",
+                  fontSize: "16px",
+                }}
+              />
+            ) : (
+              <input
+                type="email"
+                value={newContact}
+                placeholder="Enter new email address"
+                onChange={(email) => {
+                  setNewContact(email.target.value);
+                  if (
+                    email.target.value.includes("@") &&
+                    email.target.value.includes(".com")
+                  ) {
+                    setDisable({ ...disable, getCodeBtn: false });
+                  } else {
+                    setDisable({ ...disable, getCodeBtn: true });
+                  }
+                }}
+                className="border-2 border-gray-500 rounded-md px-3 py-2 outline-none"
+              />
+            )}
           </div>
           <p className="text-[0.9rem] font-bold text-gray-500 -mb-1 mt-1">
-            A verification code will be sent you via WhatsApp or SMS.
+            A verification code will be sent you via{" "}
+            {option === "number" ? "WhatsApp or SMS" : "Email"}.
           </p>
           <div className=" flex items-center">
             <input

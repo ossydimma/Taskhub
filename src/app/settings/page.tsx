@@ -35,7 +35,6 @@ export default function page() {
   >(undefined);
 
  
-  const [hasEmail, setHasEmail] = useState<boolean>(false);
 
   // functions
   const EditUsername = () => {};

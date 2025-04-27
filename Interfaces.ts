@@ -6,6 +6,19 @@ export interface User {
     imageSrc : string;
     PhoneNumber : string;   
 }
+
+export interface SignupModelType {
+    fullName : string;
+    email : string;
+    password : string;
+    
+}
+
+export interface LoginModelType {
+    email : string;
+    password : string;
+    remberMe : boolean;
+}
 export interface NavBarToolTips {
     createTask : boolean;
     home : boolean;

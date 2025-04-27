@@ -169,7 +169,7 @@ export default function ChangeContact({
                   submitBtn: e.target.value.length < 4,
                 });
               }}
-              placeholder="Enter OTP"
+              placeholder="Enter Code"
               className="  outline-none w-[80%] rounded-l-md  border-2 border-r-0 border-gray-500 h-[2.8rem] px-3"
             />
             <button

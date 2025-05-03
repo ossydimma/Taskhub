@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import EyeIcon from "../components/EyeIcon";
-import PhoneInput from "../components/phoneInput";
 import { UserDetails } from "../../../mock";
 import {
   PasswordType,
@@ -33,8 +32,6 @@ export default function page() {
   const [selectedOption, setSelectedOption] = useState<
     "userName" | "email" | "password" | "number" | undefined
   >(undefined);
-
- 
 
   // functions
   const EditUsername = () => {};
@@ -325,8 +322,11 @@ export default function page() {
             </div>
           )}
 
-          {(selectedOption === "number")  && (
-            <ModifyContact setShowChangeNumber={setShowChangeContact} option={selectedOption} />
+          {selectedOption === "number" && (
+            <ModifyContact
+              setShowChangeNumber={setShowChangeContact}
+              option={selectedOption}
+            />
           )}
 
           {/* {selectedOption === "email" && ()} */}

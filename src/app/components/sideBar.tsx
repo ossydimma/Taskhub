@@ -9,6 +9,11 @@ import { usePathname } from "next/navigation";
 export default function sideBar() {
   const pathname = usePathname();
 
+  const isAuthPages =
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/signup") ||
+    pathname.startsWith("/forgetPassword");
+
   const [isMaximized, setIsMaximized] = useState<boolean>(
     window.innerWidth <= 815 ? false : true
   );
@@ -44,7 +49,7 @@ export default function sideBar() {
 
   return (
     <div className=" h-[96Vh] sm:my-[2vh] sm:ml-[0.5vh] sm:pt-2 pb-3.5 sm:px-3 md:px-2 text-black ">
-      {showSideBar && (
+      {showSideBar && !isAuthPages && (
         <div className=" h-[95vh] flex flex-col justify-between pt-2 ">
           <ul
             className={clsx(`flex flex-col gap-4 text-sm md:text-[1rem]`, {
@@ -99,10 +104,7 @@ export default function sideBar() {
             </li>
 
             {/* ----------------- CREATE TASK------------------ */}
-            <li
-              className=" my-4"
-              // @onclick="HandleCreateTaskDisplay"
-            >
+            <li className=" my-4">
               <Link href={"/createtask"}>
                 <div>
                   {isMaximized && (
@@ -131,17 +133,10 @@ export default function sideBar() {
                           <title>plus-circle</title>
                           <desc>Created with Sketch Beta.</desc>
                           <defs> </defs>
-                          <g
-                            id="Page-1"
-                            // stroke="none"
-                            strokeWidth="1"
-                            // fill="none"
-                            fillRule="evenodd"
-                          >
+                          <g id="Page-1" strokeWidth="1" fillRule="evenodd">
                             <g
                               id="Icon-Set"
                               transform="translate(-464.000000, -1087.000000)"
-                              // fill="#000000"
                             >
                               <path
                                 d="M480,1117 C472.268,1117 466,1110.73 466,1103 C466,1095.27 472.268,1089 480,1089 C487.732,1089 494,1095.27 494,1103 C494,1110.73 487.732,1117 480,1117 L480,1117 Z M480,1087 C471.163,1087 464,1094.16 464,1103 C464,1111.84 471.163,1119 480,1119 C488.837,1119 496,1111.84 496,1103 C496,1094.16 488.837,1087 480,1087 L480,1087 Z M486,1102 L481,1102 L481,1097 C481,1096.45 480.553,1096 480,1096 C479.447,1096 479,1096.45 479,1097 L479,1102 L474,1102 C473.447,1102 473,1102.45 473,1103 C473,1103.55 473.447,1104 474,1104 L479,1104 L479,1109 C479,1109.55 479.447,1110 480,1110 C480.553,1110 481,1109.55 481,1109 L481,1104 L486,1104 C486.553,1104 487,1103.55 487,1103 C487,1102.45 486.553,1102 486,1102 L486,1102 Z"
@@ -495,7 +490,7 @@ export default function sideBar() {
 
       {
         // ---------------- MOBILE VIEW -------------------
-        !showSideBar && (
+        !showSideBar && !isAuthPages && (
           <div className=" w-full fixed bottom-0 bg-[#dadde2] z-50">
             <ul className="flex justify-between items-center  text-xs xxs:text-sm px-6 xxs:px-8 pt-2  ">
               {/* --------------- HOME -------------- */}

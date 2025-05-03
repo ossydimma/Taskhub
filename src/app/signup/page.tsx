@@ -33,18 +33,6 @@ export default function page() {
   const [OTP, setOTP] = useState<string>("");
   const [timeLeft, setTimeLeft] = useState<number>(0);
 
-  // useEffect(() => {
-  //   if (timeLeft <= 0) return;
-
-  //   // if (timeLeft === 1) setDisable({ ...disable, getCodeBtn: false });
-
-  //   const timer = setInterval(() => {
-  //     setTimeLeft((prev) => prev - 1);
-  //   }, 1000);
-
-  //   return () => clearInterval(timer);
-  // }, [timeLeft]);
-
   // FUNCTIONS
 
   const toggleNewPasword = () => {
@@ -101,12 +89,11 @@ export default function page() {
     <div className="w-screen h-screen flex justify-center items-center">
       {displayModal ? (
         <EnterOTP
-          
           handleVerifyCode={() => {}}
           handleCancel={() => setDisplayModal(false)}
           timeLeft={timeLeft}
           setTimeLeft={setTimeLeft}
-          userEmail={signupModel.email} 
+          userEmail={signupModel.email}
         />
       ) : (
         <div className="relative w-[60%] sm:w-[50%] md:w-[40%] lg:w-[28%] rounded-[0.8rem] px-4 py-5 border border-gray-300 font-serif">

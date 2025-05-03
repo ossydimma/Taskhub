@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { UserDetails } from "../../../mock";
-import 'react-phone-input-2/lib/style.css'
+import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 // import {}
 
-export default function ModifyContact( {setShowChangeNumber , option}: {setShowChangeNumber: React.Dispatch<React.SetStateAction<boolean>>, option: string | undefined }) {
+export default function ModifyContact({
+  setShowChangeNumber,
+  option,
+}: {
+  setShowChangeNumber: React.Dispatch<React.SetStateAction<boolean>>;
+  option: string | undefined;
+}) {
   const [hasPhone, setHasPhone] = useState<boolean>(true);
   const [showRemoveNumber, setShowRemoveNumber] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  // const [showChangeNumber, setShowChangeNumber] = useState<boolean>(false);
-  // const [newNumber, setNewNumber] = useState<string>("");
-  // const [OTP, setOTP] = useState<string>("");
-  // const [disableBtn, setDisableBtn] = useState<boolean>(true);
 
   const handleRemoveNumber = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,7 +29,11 @@ export default function ModifyContact( {setShowChangeNumber , option}: {setShowC
         <div className="relative">
           <div>
             <div className="flex justify-between items-center gap-2 my-8">
-              <p className="text-lg md:text-[1rem] xl:text-lg">{option == "number" ? UserDetails.PhoneNumber : UserDetails.email }</p>
+              <p className="text-lg md:text-[1rem] xl:text-lg">
+                {option == "number"
+                  ? UserDetails.PhoneNumber
+                  : UserDetails.email}
+              </p>
               <div
                 className="cursor-pointer hover:text-red-500 p-1"
                 onClick={() => setShowRemoveNumber(true)}
@@ -70,7 +76,11 @@ export default function ModifyContact( {setShowChangeNumber , option}: {setShowC
                     </g>
                   </svg>
                 </div>
-                <p className="text-[1rem]"> Enter your password to remove {option == "number" ? "number" : "email"}</p>
+                <p className="text-[1rem]">
+                  {" "}
+                  Enter your password to remove{" "}
+                  {option == "number" ? "number" : "email"}
+                </p>
 
                 <form action="" className=" mt-2 flex flex-col gap-2">
                   <label htmlFor="password">password:</label>
@@ -100,14 +110,15 @@ export default function ModifyContact( {setShowChangeNumber , option}: {setShowC
 
             <p className="my-2 text-[1rem">
               {" "}
-              Your {option === "number" ? "phone number" : "email address" } helps us keep your account secure by adding an
-              additional layer of verification.{" "}
+              Your {option === "number" ? "phone number" : "email address"}{" "}
+              helps us keep your account secure by adding an additional layer of
+              verification.{" "}
             </p>
             <button
               className="bg-black text-white rounded-lg px-4 py-2 mt-4 w-full"
               onClick={() => setShowChangeNumber(true)}
-            > 
-              Change {option === "number" ? "Number" : "Email"} 
+            >
+              Change {option === "number" ? "Number" : "Email"}
             </button>
           </div>
         </div>
@@ -127,7 +138,7 @@ export default function ModifyContact( {setShowChangeNumber , option}: {setShowC
               />
             </div>
             <div className="ml-auto bg-black hover:bg-white border-2 border-black text-white hover:text-black font-semibold text-lg px-4 py-2  rounded-lg mt-6 w-fit ">
-              <button  className="" type="submit">
+              <button className="" type="submit">
                 Update
               </button>
             </div>

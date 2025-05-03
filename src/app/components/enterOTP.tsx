@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 export default function enterOTP({
     handleCancel,
-//   setDisplayModal,
   userEmail,
   timeLeft,
   setTimeLeft,
@@ -15,7 +14,6 @@ export default function enterOTP({
     handleCancel: () => void;
 }) {
   const [OTP, setOTP] = useState<string>("");
-  // const [timeLeft, setTimeLeft] = useState<number>(0);
 
   useEffect(() => {
     if (timeLeft <= 0) return;

@@ -212,7 +212,11 @@ export default function page() {
               Password
             </h2>
 
-            <form action="" onSubmit={resetPassword} className=" flex flex-col gap-4">
+            <form
+              action=""
+              onSubmit={resetPassword}
+              className=" flex flex-col gap-4"
+            >
               <p className="text-red-500">{errorMessage}</p>
               <div className="flex flex-col">
                 <label htmlFor="new-password" className="">
@@ -250,7 +254,6 @@ export default function page() {
                     type={passwordType.confirmPassword}
                     name="confirm-password"
                     id="confirm-password"
-                    // placeholder="Confirm your new password"
                     onChange={(e) =>
                       setPasswordValue({
                         ...passwordValue,
